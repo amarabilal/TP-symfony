@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class SubscriptionController extends AbstractController
 {
     #[Route(path: '/subscriptions', name: 'subscriptions')]
+
     public function show(
         SubscriptionRepository $subscriptionRepository
     ): Response

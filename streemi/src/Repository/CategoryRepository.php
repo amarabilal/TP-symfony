@@ -16,6 +16,7 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
+
 //        /**
 //         * @return Category[] Returns an array of Category objects
 //         */
@@ -30,6 +31,7 @@ class CategoryRepository extends ServiceEntityRepository
 //                ->getResult()
             ;
         }
+
 
     //    public function findOneBySomeField($value): ?Category
     //    {

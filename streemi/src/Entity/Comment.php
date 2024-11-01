@@ -24,6 +24,8 @@ class Comment
     private ?CommentStatusEnum $status = null;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'childComments')]
+
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?self $parentComment = null;
 
     /**

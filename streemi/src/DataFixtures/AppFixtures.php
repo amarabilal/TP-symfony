@@ -27,9 +27,9 @@ class AppFixtures extends Fixture
         $this->generateSubscriptionHistories($manager, $users);
         $this->generatePlaylists($manager, $users, $medias);
 
+
         $manager->flush();
     }
-
     private function generateUsers(ObjectManager $manager)
     {
         $users = [];

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+   {{ parent() }} Catégorie
+{% endblock %}
+
+{% block contenu_page %}
+    <section>
+        <h1 class="text-lg font-bold text-gray-700 mb-5">Catégorie : {{ category.name }}</h1>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
+            {% for movie in movies %}
+                {% include 'parts/movie_card_category.html.twig' %}
+            {% else %}
+                <p>Aucun film trouvé dans cette catégorie.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

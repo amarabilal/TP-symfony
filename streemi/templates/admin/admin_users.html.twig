@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration des utilisateurs{% endblock %}
+
+{% block contenu_page %}
+    <section>
+        <h1 class="text-lg font-medium text-black mb-9">
+            Administration <span class="font-bold text-red-600">des utilisateurs</span>
+        </h1>
+
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full border-collapse border border-gray-200">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border px-4 py-2">ID</th>
+                        <th class="border px-4 py-2">Nom & Email</th>
+                        <th class="border px-4 py-2">Date d'inscription</th>
+                        <th class="border px-4 py-2">Statut</th>
+                        <th class="border px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td class="border px-4 py-2">{{ user.id }}</td>
+                            <td class="border px-4 py-2">{{ user.username }}<br>{{ user.emailAddress }}</td>
+                            <td class="border px-4 py-2">{{ user.createdAt|date('d M Y') }}</td>
+                            <td class="border px-4 py-2">{{ user.status }}</td>
+                            <td class="border px-4 py-2">
+                                <a href="{{ path('edit_user', {id: user.id}) }}" class="text-orange-500 hover:underline">Modifier</a> |
+                                <a href="{{ path('delete_user', {id: user.id}) }}" class="text-red-500 hover:underline">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

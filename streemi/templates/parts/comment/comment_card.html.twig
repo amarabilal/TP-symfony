@@ -1,0 +1,12 @@
+<div class="p-4 border-b">
+    <div class="flex items-center space-x-3 mb-2">
+        <img src="{{ comment.author.avatarUrl|default('https://via.placeholder.com/40') }}" 
+             alt="{{ comment.author.username }}" 
+             class="h-8 w-8 rounded-full">
+        <div>
+            <span class="font-semibold text-sm">{{ comment.author.username }}</span>
+            <span class="text-xs text-gray-500">{{ comment.createdAt|date('d/m/Y H:i') }}</span>
+        </div>
+    </div>
+    <p class="text-gray-700 text-sm">{{ comment.message }}</p>
+</div>

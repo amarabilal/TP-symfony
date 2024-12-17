@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration des Films et Séries{% endblock %}
+
+{% block contenu_page %}
+    <section>
+        <h1 class="text-lg font-medium text-black mb-9">
+            Administration <span class="font-bold text-red-600">Films / Séries</span>
+        </h1>
+
+        <!-- Bouton pour ajouter un film/série -->
+        <div class="mb-4">
+            <a href="{{ path('admin_add_films') }}" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
+                Ajouter un Film / Série
+            </a>
+        </div>
+
+        <!-- Tableau des films/séries -->
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full border-collapse border border-gray-200">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border px-4 py-2">ID</th>
+                        <th class="border px-4 py-2">Titre</th>
+                        <th class="border px-4 py-2">Date de sortie</th>
+                        <th class="border px-4 py-2">Type</th>
+                        <th class="border px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for media in medias %}
+                        <tr>
+                            <td class="border px-4 py-2">{{ media.id }}</td>
+                            <td class="border px-4 py-2">{{ media.title }}</td>
+                            <td class="border px-4 py-2">{{ media.releaseDate|date('d M Y') }}</td>
+                            <td class="border px-4 py-2">{{ media.type }}</td>
+                            <td class="border px-4 py-2">
+                                <a href="{{ path('edit_film', {id: media.id}) }}" class="text-orange-500 hover:underline">Modifier</a> |
+                                <a href="{{ path('delete_film', {id: media.id}) }}" class="text-red-500 hover:underline">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center text-gray-500 py-4">Aucun film ou série trouvé.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

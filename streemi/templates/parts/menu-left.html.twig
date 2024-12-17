@@ -1,0 +1,19 @@
+<aside class="w-1/6 py-10 pl-10 min-w-min border-r border-gray-300 hidden md:block">
+    <div class="font-bold text-lg flex items-center gap-x-3">
+        <svg class="h-8 w-8 fill-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M10 15.5v-7c0-.41.47-.65.8-.4l4.67 3.5c.27.2.27.6 0 .8l-4.67 3.5c-.33.25-.8.01-.8-.4Z"></path>
+        </svg>
+        <div class="tracking-wide">Streemi<span class="text-red-600">.</span></div>
+    </div>
+
+    <!-- Menu principal -->
+    <div class="mt-12 flex flex-col gap-y-4 text-gray-500 text-sm">
+        <a href="{{ path('homepage') }}" class="hover:text-red-600">Accueil</a>
+        <a href="{{ path('movie_discover') }}" class="hover:text-red-600">Découvrir</a>
+        <a href="{{ path('show_my_list') }}" class="hover:text-red-600">Mes listes</a>
+        <a href="{{ path('subscriptions') }}" class="hover:text-red-600">Mes abonnements</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('admin_dashboard') }}" class="hover:text-red-600">Administration</a>
+        {% endif %}
+    </div>
+</aside>

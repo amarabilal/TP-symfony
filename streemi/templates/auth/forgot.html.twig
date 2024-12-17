@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié{% endblock %}
+
+{% block contenu_page %}
+<section class="h-full relative">
+    <div class="bg-cover bg-no-repeat h-full before:bg-black/40" style="background-image: url('https://blog.compose.fr/wp-content/uploads/2024/05/Marathon-Cinema.webp');">
+        <div class="p-8 lg:w-1/2 mx-auto h-full flex items-center justify-center">
+            <div class="bg-white rounded-lg p-8 relative w-full">
+                <h1 class="text-center text-lg font-bold">Mot de passe oublié ?</h1>
+                <p class="text-center text-sm font-medium opacity-70 mt-5">Renseignez votre email pour réinitialiser votre mot de passe.</p>
+
+                <form method="post" action="{{ path('forgot_password') }}" class="mt-10">
+                    <div class="relative">
+                        <input class="w-full px-8 py-4 rounded-lg bg-gray-100 border focus:outline-none" name="email" type="email" placeholder="Adresse Email" required>
+                    </div>
+                    <div class="mt-8">
+                        <button type="submit" class="w-full bg-red-600 p-3 text-white rounded-lg hover:bg-red-700">Réinitialiser le mot de passe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

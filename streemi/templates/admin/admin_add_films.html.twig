@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Film ou une Série{% endblock %}
+
+{% block contenu_page %}
+    <section>
+        <h1 class="text-lg font-medium text-black mb-9">
+            Ajouter un <span class="font-bold text-red-600">Film / Série</span>
+        </h1>
+
+        <!-- Inclusion du formulaire -->
+        <div>
+            {% include 'admin/admin_add_films_form.html.twig' %}
+        </div>
+    </section>
+{% endblock %}

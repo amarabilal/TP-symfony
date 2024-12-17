@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réinitialiser le mot de passe{% endblock %}
+
+{% block contenu_page %}
+<section class="h-full relative">
+    <div class="bg-cover bg-no-repeat h-full before:bg-black/40" style="background-image: url('https://blog.compose.fr/wp-content/uploads/2024/05/Marathon-Cinema.webp');">
+        <div class="p-8 lg:w-1/2 mx-auto h-full flex items-center justify-center">
+            <div class="bg-white rounded-lg p-8 relative w-full">
+                <h1 class="text-center text-lg font-bold">Réinitialisation du mot de passe</h1>
+
+                <form method="post" action="{{ path('app_reset_password') }}" class="mt-10">
+                    <div class="relative mt-4">
+                        <input class="w-full px-8 py-4 rounded-lg bg-gray-100 border focus:outline-none" name="password" type="password" placeholder="Nouveau mot de passe" required>
+                    </div>
+                    <div class="relative mt-4">
+                        <input class="w-full px-8 py-4 rounded-lg bg-gray-100 border focus:outline-none" name="confirm_password" type="password" placeholder="Confirmez le mot de passe" required>
+                    </div>
+                    <div class="mt-8">
+                        <button type="submit" class="w-full bg-red-600 p-3 text-white rounded-lg hover:bg-red-700">Changer le mot de passe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

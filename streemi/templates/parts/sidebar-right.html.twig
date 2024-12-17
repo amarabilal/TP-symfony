@@ -1,0 +1,11 @@
+<aside class="w-1/5 py-10 px-10 border-l border-gray-300 hidden lg:block">
+    <div class="text-center mb-4">
+        Bonjour <b>{{ app.user.username|default('Anonyme') }}</b>
+    </div>
+    <span class="font-semibold text-gray-700">Mes films en cours</span>
+    <ul class="mt-4">
+        {% for movie in currentMovies %}
+            {% include 'parts/movie_card_sidebar.html.twig' with { 'movie': movie } %}
+        {% endfor %}
+    </ul>
+</aside>

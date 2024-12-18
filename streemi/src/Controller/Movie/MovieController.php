@@ -3,6 +3,7 @@
 namespace App\Controller\Movie;
 
 use App\Repository\MovieRepository;
+use App\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,6 +31,16 @@ class MovieController extends AbstractController
 
         return $this->render('movie/detail.html.twig', [
             'movie' => $movie,
+        ]);
+    }
+
+    #[Route('/discover', name: 'app_movie_discover')]
+    public function discover(MediaRepository $mediaRepository): Response
+    {
+        $movies = $mediaRepository->findBy([], ['releaseDate' => 'DESC']);
+
+        return $this->render('movie/discover.html.twig', [
+            'recommendedMovies' => $movies,
         ]);
     }
 }

@@ -1,18 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-   {{ parent() }} Catégorie
-{% endblock %}
+{% block title %}Catégorie : {{ category.name }}{% endblock %}
 
 {% block contenu_page %}
-    <section>
-        <h1 class="text-lg font-bold text-gray-700 mb-5">Catégorie : {{ category.name }}</h1>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
-            {% for movie in movies %}
-                {% include 'parts/movie_card_category.html.twig' %}
-            {% else %}
-                <p>Aucun film trouvé dans cette catégorie.</p>
-            {% endfor %}
-        </div>
-    </section>
+<section>
+    <h1 class="text-2xl font-bold mb-5">Catégorie : {{ category.name }}</h1>
+    <div class="grid grid-cols-2 gap-6">
+        {% for media in category.mediaItems %}
+            <div class="bg-white p-4 rounded-lg shadow">
+                <img src="{{ media.thumbnail }}" alt="{{ media.name }}" class="rounded-lg w-full h-48 object-cover">
+                <h2 class="mt-2 font-semibold">{{ media.name }}</h2>
+                <p class="text-gray-600 text-sm mt-1">
+                    {% if media is instance of('App\\Entity\\Movie') %}
+                        Type : Film
+                    {% elseif media is instance of('App\\Entity\\Serie') %}
+                        Type : Série
+                    {% endif %}
+                </p>
+            </div>
+        {% else %}
+            <p>Aucun média trouvé dans cette catégorie.</p>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}

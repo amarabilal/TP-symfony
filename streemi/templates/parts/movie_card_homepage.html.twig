@@ -1,11 +1,16 @@
-<aside class="w-1/5 py-10 px-10 border-l border-gray-300 hidden lg:block">
-    <div class="text-center mb-4">
-        Bonjour <b>{{ app.user.username|default('Anonyme') }}</b>
+<div class="p-4 bg-gray-100 rounded-lg shadow-md">
+    <div class="relative">
+        <img src="{{ movie.thumbnail }}" alt="{{ movie.name }}" class="rounded-lg object-cover w-full h-48">
+        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">
+            {% if movie is instance of('App\\Entity\\Movie') %}
+                Film
+            {% elseif movie is instance of('App\\Entity\\Serie') %}
+                Série
+            {% endif %}
+        </span>
     </div>
-    <span class="font-semibold text-gray-700">Mes films en cours</span>
-    <ul class="mt-4">
-        {% for movie in currentMovies %}
-            {% include 'parts/movie_card_sidebar.html.twig' with { 'movie': movie } %}
-        {% endfor %}
-    </ul>
-</aside>
+    <h3 class="mt-3 text-lg font-semibold">{{ movie.name }}</h3>
+    <p class="text-gray-600 text-sm">
+        {{ movie.summary|truncate(80, true) }}
+    </p>
+</div>

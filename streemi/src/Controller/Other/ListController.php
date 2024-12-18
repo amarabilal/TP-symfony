@@ -32,4 +32,15 @@ class ListController extends AbstractController
             'playlist' => $playlist,
         ]);
     }
+
+    #[Route('/my-lists', name: 'app_show_my_list')]
+    public function myLists(PlaylistRepository $playlistRepository): Response
+    {
+        $user = $this->getUser();
+        $playlists = $playlistRepository->findBy(['creator' => $user]);
+
+        return $this->render('other/lists.html.twig', [
+            'playlists' => $playlists,
+        ]);
+    }
 }

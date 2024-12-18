@@ -8,10 +8,10 @@
 
     <!-- Menu principal -->
     <div class="mt-12 flex flex-col gap-y-4 text-gray-500 text-sm">
-        <a href="{{ path('homepage') }}" class="hover:text-red-600">Accueil</a>
-        <a href="{{ path('movie_discover') }}" class="hover:text-red-600">Découvrir</a>
-        <a href="{{ path('show_my_list') }}" class="hover:text-red-600">Mes listes</a>
-        <a href="{{ path('subscriptions') }}" class="hover:text-red-600">Mes abonnements</a>
+        <a href="{{ path('app_home') }}" class="hover:text-red-600">Accueil</a>
+        <a href="{{ path('app_movie_discover') }}" class="hover:text-red-600">Découvrir</a>
+        <a href="{{ path('app_show_my_list') }}" class="hover:text-red-600">Mes listes</a>
+        <a href="{{ path('app_subscriptions') }}" class="hover:text-red-600">Mes abonnements</a>
         {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('admin_dashboard') }}" class="hover:text-red-600">Administration</a>
         {% endif %}
